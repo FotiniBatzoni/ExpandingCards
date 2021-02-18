@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:wght@400;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+/* To center */
+body{
+    font-family: Muli, sans-serif;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin:0;
+}
+
+.container{
+    display:flex;  /* turn it into a flex row */
+    /* felx-direction: column;  //it would turn it to e column*/
+    width:80%;
+}
+
+.panel{
+    /* attibute for panels */
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height:80vh;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+
+    flex:1;    /*  width of each panel --all are even*/
+    margin:1%;    
+    position:relative; /*because i want <h3> inside absolute*/
+    transition: flex 0.7s ease-in;    /*when we change the width for 
+                                        the active we want a transition
+                                        to the flex property!!!*/
+
+   
+}
+
+.panel h3{
+    font-size: 24px;
+    position:absolute; /*because panel position is relative*/
+    bottom:5%;
+    left:10%;
+    margin:0;
+    opacity:0; /*make them invisible when they are not active*/
+
+}
+
+.panel.active{
+    flex:10; /*we change the width*/
+    border-radius: 10px;
+    background-size:100%;
+}
+
+.panel.active h3{
+    opacity:1;  /*if is active we can see them*/
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+
+@media(max-width: 480px){
+    .container{
+        width:100vw;
+    }
+
+    /*we remove the last two columns*/
+    .panel:nth-of-type(3),
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5){
+        display:none;
+    }
+}
+
+ @media(min-width: 480px){
+    .panel.active{
+        background-size:cover;
+    } 
+}
